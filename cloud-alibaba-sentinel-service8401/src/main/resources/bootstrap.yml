@@ -1,6 +1,6 @@
 spring:
   application:
-    name: cloud-alibaba-config
+    name: cloud-alibaba-sentinel-service
   profiles:
     active: dev #开发环境
   cloud:
@@ -8,8 +8,9 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: yaml    #文件格式
-        group: DEFAULT_GROUP   #分组名称
+        group: DEV_GROUP   #分组名称
         #namespace: 0ac4cd5f-15a4-41b7-ab8c-a015e786993b     #命名空间 默认public
+
 
 
 
