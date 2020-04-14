@@ -32,6 +32,11 @@
         <module>cloud-alibaba-consumer9002</module>
         <module>cloud-alibaba-config3377</module>
         <module>cloud-alibaba-sentinel-service8401</module>
+        <module>cloud-alibaba-sentinel-provider9101</module>
+        <module>cloud-alibaba-sentinel-consumer9102</module>
+        <module>seata-order-server2001</module>
+        <module>seata-storage-server2002</module>
+        <module>seata-account-server2003</module>
     </modules>
 
 

@@ -1,0 +1,45 @@
+server:
+  port: 2003
+spring:
+  application:
+    name: seata-account-server
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.107.97.250:3306/seata_account?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: heitaoc
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        # sentinel dashboard 地址
+        dashboard: localhost:8080
+        # 默认为8719，如果被占用会自动+1，直到找到为止
+        port: 8719
+    alibaba:
+      seata:
+        tx-service-group: cloud_tx_group
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.heitaoc.springcloud.domain
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  #默认只公开了/health和/info端点，要想暴露所有端点只需设置成星号即可
+
+ribbon:  #设置feign客户端连接超时时间（openfeign默认支持ribbon）
+  ReadTimeout: 5000  #建立连接后的读取时间，超时
+  ConnectTimeout: 5000  #连接所用时间，两端所使用连接时间
+
+feign:
+  hystrix:
+    enabled: false

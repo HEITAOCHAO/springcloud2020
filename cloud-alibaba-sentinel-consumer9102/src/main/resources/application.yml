@@ -1,0 +1,32 @@
+server:
+  port: 9102
+spring:
+  application:
+    name: cloud-alibaba-sentinel-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        # sentinel dashboard 地址
+        dashboard: localhost:8080
+        # 默认为8719，如果被占用会自动+1，直到找到为止
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8080
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  #默认只公开了/health和/info端点，要想暴露所有端点只需设置成星号即可
+#激活sentinel对feign的支持
+feign:
+  sentinel:
+    enabled: true
